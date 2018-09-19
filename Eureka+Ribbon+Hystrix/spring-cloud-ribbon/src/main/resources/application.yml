@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: ribbon-service
+
+server:
+  port: 8007
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+      
+hystrix:
+  command:
+    helloService-sayWhy:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1500
