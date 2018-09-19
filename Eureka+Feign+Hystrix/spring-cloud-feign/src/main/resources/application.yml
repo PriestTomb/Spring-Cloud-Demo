@@ -3,14 +3,31 @@ server:
   
 spring:
   application:
-    name: service-feign
+    name: feign-service
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8000/eureka/
-    
-#Spring Boot 2.0.4.RELEASE 版本时，在 Eclipse 中设置 feign.hystrix.enabled 会有警告（据说 IDEA 下没有），但不需要管，直接用就行了，2.0.5.RELEASE 版本之后 Eclipse 下正常
+  
+-#Spring Boot 2.0.4.RELEASE 版本时，在 Eclipse 中设置 feign.hystrix.enabled 会有警告（据说 IDEA 下没有），但不需要管，直接用就行了    
 feign:
   hystrix:
     enabled: true
+    
+hystrix:
+  command:
+    "MyFeignClient#sayWhyByFeign()": 
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 9000
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+            
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000

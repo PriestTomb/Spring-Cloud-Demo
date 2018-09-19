@@ -14,6 +14,11 @@ public class FeignController {
 	
 	@RequestMapping("hello")
 	public String hello() {
-		return myFeignClient.sayHelloFromFeign();
+		return myFeignClient.sayHelloByFeign();
+	}
+	
+	@RequestMapping("why")
+	public String why() {
+		return myFeignClient.sayWhyByFeign();
 	}
 }

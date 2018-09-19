@@ -21,6 +21,21 @@ public class SpringCloudHelloServiceApplication {
 	
 	@RequestMapping("/hello")
 	public String hello() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return "client say hello, current server port = " + serverPort;
+	}
+	
+	@RequestMapping("/why")
+	public String why() {
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return "client say why, current server port = " + serverPort;
 	}
 }

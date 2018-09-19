@@ -17,7 +17,7 @@ import com.netflix.hystrix.exception.HystrixTimeoutException;
 @Component
 public class HiFallbackProvider implements FallbackProvider {
 
-	@Value("${zuul.routes.hi-service.serviceId}")
+	@Value("${zuul.routes.hiService.serviceId}")
 	String hiServiceRoute;
 	
 	

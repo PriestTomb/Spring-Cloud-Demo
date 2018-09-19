@@ -3,7 +3,7 @@ server:
   
 spring:
   application:
-    name: service-zuul
+    name: zuul-service
 
 eureka:
   client:
@@ -12,9 +12,27 @@ eureka:
       
 zuul:
   routes:
-    hello-service:
+    helloService:
       path: /hello-service/**
       serviceId: hello-service
-    hi-service:
+    hiService:
       path: /hi-service/**
       serviceId: hi-service
+
+hello-service:
+  ribbon:
+    ConnectTimeout: 5000
+    ReadTimeout: 5000
+    
+hi-service:
+  ribbon:
+    ConnectTimeout: 500
+    ReadTimeout: 500
+    
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
