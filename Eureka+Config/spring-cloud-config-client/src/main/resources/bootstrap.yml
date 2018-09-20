@@ -1,0 +1,20 @@
+#config 的发现使用 service-id 的话，就必须把 eureka 的注册放在 bootstrap.yml 中
+#如果使用 uri 配置的话，可以把 eureka 的配置也丢到 confie server 去
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+  instance:
+    prefer-ip-address: true
+    
+    
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      discovery:
+        service-id: config-server
+        enabled: true
+      profile: dev #test
+      label: ""
