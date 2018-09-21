@@ -1,0 +1,6 @@
+encrypt:
+  keyStore:
+    location: classpath:/jks/my.jks 
+    alias: testkey
+    password: wodemima
+    secret: wodemiyao

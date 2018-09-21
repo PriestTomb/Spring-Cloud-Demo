@@ -18,3 +18,7 @@ spring:
       server:
         native:
           search-locations: classpath:/config
+  security:
+    user:
+      name: admin
+      password: admin

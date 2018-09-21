@@ -6,7 +6,12 @@ eureka:
       defaultZone: http://localhost:8000/eureka/
   instance:
     prefer-ip-address: true
-    
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: refresh
     
 spring:
   application:
