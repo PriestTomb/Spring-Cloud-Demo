@@ -7,10 +7,9 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @EnableEurekaClient
 @EnableConfigServer
-@EnableAutoConfiguration(exclude = {SecurityAutoConfiguration.class})
 public class SpringCloudConfigServerApplication {
 
 	public static void main(String[] args) {
