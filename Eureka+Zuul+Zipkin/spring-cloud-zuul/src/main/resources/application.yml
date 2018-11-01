@@ -1,0 +1,45 @@
+server:
+  port: 8006
+
+spring:
+  application:
+    name: zuul-service
+  #Zipkin 服务端的地址
+  zipkin:
+    base-url: http://localhost:9411
+  #Sleuth 数据采集百分比，默认0.1，即10%的调用情况被收集，这里调成50%
+  sleuth:
+    sampler:
+      probability: 0.5
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8000/eureka/
+
+zuul:
+  routes:
+    helloService:
+      path: /hello-service/**
+      serviceId: hello-service
+    hiService:
+      path: /hi-service/**
+      serviceId: hi-service
+
+hello-service:
+  ribbon:
+    ConnectTimeout: 5000
+    ReadTimeout: 5000
+
+hi-service:
+  ribbon:
+    ConnectTimeout: 500
+    ReadTimeout: 500
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
